@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include your head content and stylesheet here -->
+</head>
+<body>
+    <header>
+        <!-- Same header content as before -->
+    </header>
+    
+    <main>
+        <section id="search">
+            <h2>Search Employees</h2>
+            <form action="search.php" method="GET">
+                <label for="searchType">Search by:</label>
+                <select name="searchType" id="searchType">
+                    <option value="username">Username</option>
+                    <option value="name">Name</option>
+                    <option value="project">Project</option>
+                </select>
+                
+                <input type="text" name="query" placeholder="Search query" required>
+                <button type="submit">Search</button>
+            </form>
+            
+            <section id="search-results">
+                <h3>Search Results</h3>
+                <ul>
+                    <!-- Search results will be displayed here -->
+                </ul>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
+
+<script>
+    const searchForm = document.querySelector('#search');
+const resultsList = document.querySelector('#results-list');
+
+searchForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const searchType = document.querySelector('#searchType').value;
+    const query = document.querySelector('input[name="query"]').value;
+
+    fetch(`search.php?searchType=${searchType}&query=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                resultsList.innerHTML = ''; // Clear previous results
+
+                data.results.forEach(result => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Name: ${result.name}, Username: ${result.username}, Gender: ${result.gender}, Department: ${result.department}, Project: ${result.project}`;
+                    resultsList.appendChild(listItem);
+                });
+            } else {
+                resultsList.innerHTML = '<li>No results found.</li>';
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching search results:', error);
+            resultsList.innerHTML = '<li>Error fetching results.</li>';
+        });
+});
+
+</script>
+

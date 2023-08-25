@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include your head content and stylesheet here -->
+    <link rel="stylesheet" href="form_page.css">
+</head>
+<body>
+    <header>
+        <!-- Same header content as before -->
+    </header>
+    
+    <main>
+        <section id="employee-form">
+            <h2>Add Employee</h2>
+            <form action="add_employee.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="department">Department:</label>
+                <input type="text" name="department" id="department" required>
+
+                <label for="project">Project:</label>
+                <select name="project" id="project">
+                    <option value="Project 1">Project 1</option>
+                    <option value="Project 2">Project 2</option>
+                    <option value="Project 3">Project 3</option>
+                    <option value="Project 4">Project 4</option>
+                    <option value="Project 5">Project 5</option>
+                    <option value="Project 6">Project 6</option>
+                    <option value="Project 7">Project 7</option>
+                    <option value="Project 8">Project 8</option>
+                    <option value="Project 9">Project 9</option>
+                    <option value="Project 10">Project 10</option>
+                </select>
+
+                <button type="submit">Add Employee</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
+
+
